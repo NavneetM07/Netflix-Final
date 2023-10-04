@@ -18,3 +18,17 @@ for (let i = 0; i < accordian.length; i++) {
     }
   });
 }
+let url = `https://daily-tarot.vercel.app/tarot?card=${card}`;
+
+
+  displayLoading();
+  try {
+    const response = await fetch(url);
+    console.log(response)
+    const result = await response.json();
+    const resultText = result.response;
+    displayMeaning(resultText);
+  } catch (error) {
+    console.error(error);
+  }
+}
